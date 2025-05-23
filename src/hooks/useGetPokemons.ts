@@ -5,6 +5,9 @@ import gql from 'graphql-tag';
 export type Pokemon = {
   id: string;
   name: string;
+  number: string;
+  types: string[];
+  image: string;
 };
 
 export type PokemonOption = {
@@ -16,7 +19,10 @@ export const GET_POKEMONS = gql`
   query pokemons($first: Int!) {
     pokemons(first: $first) {
       id
+      number
       name
+      types
+      image
     }
   }
 `;
@@ -24,7 +30,7 @@ export const GET_POKEMONS = gql`
 export const useGetPokemons = () => {
   const { data, ...queryRes } = useQuery(GET_POKEMONS, {
     variables: {
-      first: 151, // Keep hard coded
+      first: 151,
     },
   });
 
