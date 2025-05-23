@@ -1,7 +1,7 @@
 import React, { useState, useMemo } from 'react';
 import { useGetPokemons } from '../../hooks/useGetPokemons';
 import { createUseStyles } from 'react-jss';
-import { useNavigate } from 'react-router-dom'; // Import useNavigate
+import { useNavigate } from 'react-router-dom';
 
 const useStyles = createUseStyles({
   listContainer: {
@@ -15,8 +15,10 @@ const useStyles = createUseStyles({
     padding: '10px',
     borderRadius: '5px',
     border: '1px solid #ccc',
-    width: '300px',
+    width: '320px',
+    backgroundColor: '#fff',
     fontSize: '16px',
+    color: '#333',
     '&:focus': {
       outline: 'none',
       borderColor: '#007bff',
@@ -109,12 +111,13 @@ export const PokemonList = () => {
   const handleCardClick = (pokemonId: string) => {
     navigate(`/pokemon/${pokemonId}`);
   };
+  console.log('searchTerm', searchTerm);
 
   return (
     <div className={classes.listContainer}>
       <input
         type="text"
-        placeholder="Search Pokémon by name, number, or type..."
+        placeholder="Search Pokemon by name, number, or type ..."
         className={classes.searchBox}
         value={searchTerm}
         onChange={(e) => setSearchTerm(e.target.value)}
@@ -124,7 +127,7 @@ export const PokemonList = () => {
           <div
             key={pokemon.id}
             className={classes.pokemonCard}
-            onClick={() => handleCardClick(pokemon.id)} // Add click handler
+            onClick={() => handleCardClick(pokemon.id)}
           >
             <img
               src={pokemon.image}

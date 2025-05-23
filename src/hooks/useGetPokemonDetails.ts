@@ -1,6 +1,5 @@
-// src/hooks/useGetPokemonDetails.ts
-import gql from 'graphql-tag'; // Use this import for gql
-import { useQuery } from '@apollo/react-hooks'; // Use this import for useQuery
+import gql from 'graphql-tag';
+import { useQuery } from '@apollo/react-hooks';
 
 const GET_POKEMON_DETAILS = gql`
   query pokemon($id: String, $name: String) {
